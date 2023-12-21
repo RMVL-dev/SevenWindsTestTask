@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CoffeeShopEditTextShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_radius_text_input_fields</item>
+    </style>
+
+    <style name="TextInputLayoutTextAppearance">
+        <item name="android:textSize">@dimen/text_field</item>
+    </style>
+    
+    <style name="CoffeeTextInputStyle"
+        parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearance">@style/CoffeeShopEditTextShape</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@color/text_input_layout_box_stroke_color</item>
+        <item name="android:textAppearance">@style/TextInputLayoutTextAppearance</item>
+        <item name="hintTextAppearance">@style/TextInputLayoutTextAppearance</item>
+        <item name="hintTextColor">@color/hint_text_color</item>
+        <item name="endIconTint">@color/coffee_color</item>
+        <item name="boxStrokeErrorColor">@color/error_sign_in</item>
+    </style>
+
+</resources>
