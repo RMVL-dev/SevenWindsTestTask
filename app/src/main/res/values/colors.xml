@@ -6,4 +6,7 @@
     <color name="hint_text_color">#FFAF9479</color>
     <color name="text_color">#FF846340</color>
     <color name="error_sign_in">#FFED4337</color>
+    <color name="button_text_color">#FFF6E5D1</color>
+    <color name="toolbar_text_color">#FF846340</color>
+    <color name="toolbar_container_color">#FFFAF9F9</color>
 </resources>

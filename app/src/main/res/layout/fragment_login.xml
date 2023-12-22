@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.register.RegisterFragment"
+    tools:context=".presentation.login.LoginFragment"
     >
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
 
         app:titleCentered="true"
-        app:title="@string/register_toolbar_title"
+        app:title="@string/login_toolbar_title"
         />
 
 
@@ -23,24 +23,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/normal_100"
-        android:paddingEnd="@dimen/normal_100">
+        android:paddingEnd="@dimen/normal_100"
+        android:layout_below="@+id/toolbar_login"
+        >
         <RelativeLayout
-            android:id="@+id/rl_register_email"
+            android:id="@+id/rl_login_email"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="@dimen/normal_200"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintVertical_bias="0.45"
+            app:layout_constraintVertical_bias="0.33"
             app:layout_constraintHorizontal_bias="0.5"
 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/rl_register_password"
+            app:layout_constraintBottom_toTopOf="@+id/rl_login_password"
             >
             <TextView
-                android:id="@+id/tv_register_email"
+                android:id="@+id/tv_login_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
@@ -50,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@id/tv_register_email"
+                android:layout_below="@id/tv_login_email"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_login_email"
@@ -63,7 +65,7 @@
             </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/rl_register_password"
+            android:id="@+id/rl_login_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -73,11 +75,11 @@
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rl_register_email"
-            app:layout_constraintBottom_toTopOf="@+id/rl_register_repeat_password"
+            app:layout_constraintTop_toBottomOf="@+id/rl_login_email"
+            app:layout_constraintBottom_toTopOf="@+id/bt_login_enter"
             >
             <TextView
-                android:id="@+id/tv_register_password"
+                android:id="@+id/tv_login_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/password"
@@ -87,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/tv_register_password"
+                android:layout_below="@+id/tv_login_password"
                 >
                 <com.google.android.material.textfield.TextInputEditText
 
@@ -101,51 +103,11 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rl_register_repeat_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintVertical_bias="0.45"
-            app:layout_constraintHorizontal_bias="0.5"
-            android:layout_marginTop="@dimen/normal_100"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rl_register_password"
-            app:layout_constraintBottom_toTopOf="@+id/bt_register_enter"
-            >
-            <TextView
-                android:id="@+id/tv_register_repeat_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/repeat_password"
-
-                />
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_login_repeat_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_below="@+id/tv_register_repeat_password"
-                >
-                <com.google.android.material.textfield.TextInputEditText
-
-                    android:id="@+id/et_login_repeat_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="@string/password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
-        </RelativeLayout>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_register_enter"
+            android:id="@+id/bt_login_enter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/register"
+            android:text="@string/enter"
 
             app:layout_constraintVertical_bias="0.45"
             app:layout_constraintHorizontal_bias="0.5"
@@ -153,8 +115,9 @@
 
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rl_register_repeat_password"
+            app:layout_constraintTop_toBottomOf="@+id/rl_login_password"
             app:layout_constraintBottom_toBottomOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </RelativeLayout>

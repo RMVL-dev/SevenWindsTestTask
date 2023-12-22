@@ -7,5 +7,9 @@
 
     <style name="Theme.SevenWindsTestTask" parent="Base.Theme.SevenWindsTestTask" >
         <item name="textInputStyle">@style/CoffeeTextInputStyle</item>
+        <item name="colorPrimary">@color/coffee_color</item>
+        <item name="materialButtonStyle">@style/CoffeeButton</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="toolbarStyle">@style/CoffeeMaterialToolBar</item>
     </style>
 </resources>

@@ -9,7 +9,18 @@
     <style name="TextInputLayoutTextAppearance">
         <item name="android:textSize">@dimen/text_field</item>
     </style>
-    
+
+    <style name="MaterialButtonTextAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MaterialToolbarTextAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="CoffeeTextInputStyle"
         parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/CoffeeShopEditTextShape</item>
@@ -22,4 +33,14 @@
         <item name="boxStrokeErrorColor">@color/error_sign_in</item>
     </style>
 
+    <style name="CoffeeButton" parent="Widget.Material3.Button.UnelevatedButton">
+        <item name="android:textAppearance">@style/MaterialButtonTextAppearance</item>
+        <item name="android:textColor">@color/button_text_color</item>
+    </style>
+
+    <style name="CoffeeMaterialToolBar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/toolbar_container_color</item>
+        <item name="titleTextColor">@color/toolbar_text_color</item>
+        <item name="titleTextAppearance">@style/MaterialToolbarTextAppearance</item>
+    </style>
 </resources>
