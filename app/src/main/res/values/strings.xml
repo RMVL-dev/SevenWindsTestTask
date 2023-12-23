@@ -7,7 +7,12 @@
     <string name="password">Пароль</string>
     <string name="repeat_password">Повторите пароль</string>
     <string name="login_toolbar_title">Вход</string>
+    <string name="nearest_coffee_shops">Ближайшие кофейни</string>
+    <string name="map">Карта</string>
     <string name="register_toolbar_title">Регистрация</string>
     <string name="enter">Войти</string>
     <string name="register">Регистрация</string>
+    <string name="error_sign_in">Поле заполнено не верно</string>
+    <string name="go_to_reg"><u>Еще не зарегистрированы?</u></string>
+    <string name="on_map">На карте</string>
 </resources>

@@ -9,10 +9,26 @@
         android:id="@+id/registerFragment"
         android:name="com.example.sevenwindstesttask.presentation.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_nearestCoffeeShopsFragment"
+            app:destination="@id/nearestCoffeeShopsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.sevenwindstesttask.presentation.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_nearestCoffeeShopsFragment"
+            app:destination="@id/nearestCoffeeShopsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nearestCoffeeShopsFragment"
+        android:name="com.example.sevenwindstesttask.presentation.nearestCoffeeShops.NearestCoffeeShopsFragment"
+        android:label="fragment_nearest_coffee_shops"
+        tools:layout="@layout/fragment_nearest_coffee_shops" />
 </navigation>

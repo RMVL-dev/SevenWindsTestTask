@@ -46,14 +46,14 @@
                 android:text="@string/email"
                 />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_login_email"
+                android:id="@+id/til_register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:layout_below="@id/tv_register_email"
                 >
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_login_email"
+                    android:id="@+id/et_register_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/example_email"
@@ -83,19 +83,23 @@
                 android:text="@string/password"
                 />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_login_password"
+                android:id="@+id/til_register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
+                app:endIconDrawable="@drawable/ic_password_end_icon"
+                app:endIconTint="@color/coffee_color"
+                app:endIconMode="password_toggle"
 
                 android:layout_below="@+id/tv_register_password"
                 >
                 <com.google.android.material.textfield.TextInputEditText
 
-                    android:id="@+id/et_login_password"
+                    android:id="@+id/et_register_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/password"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionNext"
                     android:inputType="textPassword"
 
                     />
@@ -123,15 +127,19 @@
 
                 />
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_login_repeat_password"
+                android:id="@+id/til_register_repeat_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
+                app:endIconDrawable="@drawable/ic_password_end_icon"
+                app:endIconTint="@color/coffee_color"
+                app:endIconMode="password_toggle"
 
                 android:layout_below="@+id/tv_register_repeat_password"
                 >
                 <com.google.android.material.textfield.TextInputEditText
 
-                    android:id="@+id/et_login_repeat_password"
+                    android:id="@+id/et_register_repeat_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/password"

@@ -1,4 +1,4 @@
-package com.example.sevenwindstesttask.domain
+package com.example.sevenwindstesttask.domain.loginUseCase
 
 import com.example.sevenwindstesttask.data.repository.Repository
 import com.example.sevenwindstesttask.data.repository.SharedPref

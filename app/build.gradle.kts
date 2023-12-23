@@ -4,7 +4,6 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-android")
     id("androidx.navigation.safeargs.kotlin")
-    //id("com.google.gms.google-services")
 }
 
 android {
@@ -12,6 +11,9 @@ android {
     compileSdk = 34
 
     defaultConfig {
+
+        buildConfigField("String", "MAP_API_KEY", "\"b9e37a6f-8915-46cc-b149-8960387dcbea\"")
+
         applicationId = "com.example.sevenwindstesttask"
         minSdk = 24
         targetSdk = 34
@@ -39,6 +41,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -79,7 +82,7 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
 
     //yandex map kit
-    //implementation("com.yandex.android:maps.mobile:4.4.0-lite")
+    implementation("com.yandex.android:maps.mobile:4.4.0-lite")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

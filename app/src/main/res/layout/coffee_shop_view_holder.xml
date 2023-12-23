@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="71dp"
+    app:cardCornerRadius="@dimen/corner_size_view_holder"
+    android:backgroundTint="@color/coffee_shop_item_view_holder_color"
+    app:cardElevation="@dimen/normal_50"
+    android:layout_marginBottom="@dimen/margin_view_holder"
+    android:layout_marginTop="@dimen/margin_view_holder"
+    android:layout_marginStart="@dimen/normal_100"
+    android:layout_marginEnd="@dimen/normal_100"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/coffee_shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text = "BEDOEV COFFEE"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginTop="@dimen/normal_50"
+            android:layout_marginStart="@dimen/normal_100"
+            />
+
+        <TextView
+            android:id="@+id/coffee_shop_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text = "1 км от вас"
+            android:layout_marginStart="@dimen/normal_100"
+            />
+
+    </LinearLayout>
+    
+</androidx.cardview.widget.CardView >

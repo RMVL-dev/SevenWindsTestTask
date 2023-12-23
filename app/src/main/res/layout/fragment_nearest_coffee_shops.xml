@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.login.LoginFragment"
+    >
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_nearest_coffee_shops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleCentered="true"
+        app:title="@string/nearest_coffee_shops"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_nearest_coffee_shops">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_nearest_coffee_shops"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/coffee_shop_view_holder"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_to_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/on_map"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/normal_200"
+            android:layout_marginStart="@dimen/normal_100"
+            android:layout_marginEnd="@dimen/normal_100"
+            />
+    </FrameLayout>
+
+</RelativeLayout>

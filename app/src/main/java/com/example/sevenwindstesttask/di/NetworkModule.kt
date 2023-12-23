@@ -17,7 +17,7 @@ import com.example.sevenwindstesttask.data.CoffeeService
 class NetworkModule {
 
     companion object{
-        private const val BASE_URL = "http://147.78.66.203:3210"
+        private const val BASE_URL = "http://147.78.66.203:3210/"
     }
 
     @Provides

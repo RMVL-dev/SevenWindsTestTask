@@ -12,6 +12,7 @@ class HeaderInterceptor @Inject constructor(
 ):Interceptor {
 
     companion object{
+        //const val HEADER_AUTHORIZATION = "auth-jwt"
         const val HEADER_AUTHORIZATION = "Authorization"
         const val TOKEN_TYPE = "Bearer "
     }
@@ -24,7 +25,7 @@ class HeaderInterceptor @Inject constructor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val original = chain.request()
 
-        val request = if (!original.url.encodedPath.contains("user/signin")||token.isNotBlank()){
+        val request = if (!original.url.encodedPath.contains("/auth/login")||token.isNotBlank()){
             original.newBuilder().header(HEADER_AUTHORIZATION, "$TOKEN_TYPE $token")
         }else{
             original.newBuilder()
