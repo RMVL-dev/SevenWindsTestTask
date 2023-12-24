@@ -5,16 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.data.responses.coffee.Coffee
-import com.example.sevenwindstesttask.data.responses.order.Order
 
 class OrderAdapter(
-    //private val orderList: List<Order>
+    private val orderList: List<Coffee>
 ):RecyclerView.Adapter<OrderViewHolder>() {
 
-    private val orderList:List<Order> = listOf(
-        Order(1,"name","",200,1),
-        Order(1,"name2","",200,1)
-    )
+    var increment:(Int)->Unit = {}
+    var decrement:(Int)->Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder =
         OrderViewHolder(
             view = LayoutInflater.from(parent.context)
@@ -26,7 +24,9 @@ class OrderAdapter(
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         holder.bind(
-            item = orderList[position]
+            item = orderList[position],
+            increase = {increment(position)},
+            decrease = {decrement(position)}
         )
     }
 }

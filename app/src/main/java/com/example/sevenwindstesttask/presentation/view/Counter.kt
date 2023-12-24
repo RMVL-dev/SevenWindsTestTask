@@ -13,6 +13,7 @@ class Counter @JvmOverloads constructor(
 
     private var binding: CounterBinding? = null
 
+
     init {
         binding = CounterBinding.bind(
             LayoutInflater.from(context).inflate(R.layout.counter,this, true)

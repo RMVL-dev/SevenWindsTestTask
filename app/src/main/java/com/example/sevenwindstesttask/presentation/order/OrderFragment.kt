@@ -1,15 +1,13 @@
 package com.example.sevenwindstesttask.presentation.order
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.sevenwindstesttask.R
-import com.example.sevenwindstesttask.data.responses.order.Order
 import com.example.sevenwindstesttask.databinding.FragmentOrderBinding
 import com.example.sevenwindstesttask.presentation.order.adapter.OrderAdapter
 import dagger.android.support.AndroidSupportInjection
@@ -40,11 +38,21 @@ class OrderFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (orderViewModel.orderList != null){
-            val adapter = OrderAdapter()
+        orderViewModel.orderList.observe(viewLifecycleOwner){orderList->
+            val adapter = OrderAdapter(orderList = orderList)
+            adapter.decrement = {position ->
+                orderViewModel.decrease(position)
+                adapter.notifyItemChanged(position)
+            }
+            adapter.increment = {position ->
+                orderViewModel.increase(position = position)
+                adapter.notifyItemChanged(position)
+            }
             binding.rvOrderList.adapter = adapter
         }
-
+        binding.toolbarOrder.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun onDestroyView() {

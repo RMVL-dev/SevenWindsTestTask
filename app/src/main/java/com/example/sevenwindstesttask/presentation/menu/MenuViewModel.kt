@@ -7,8 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.sevenwindstesttask.data.responses.coffee.Coffee
 import com.example.sevenwindstesttask.domain.menuUseCase.MenuUseCase
 import com.example.sevenwindstesttask.data.responseState.ResponseState
-import com.example.sevenwindstesttask.data.responses.coffee.toOrder
-import com.example.sevenwindstesttask.data.responses.order.Order
 import com.example.sevenwindstesttask.helpers.JsonConverter
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,9 +17,6 @@ class MenuViewModel @Inject constructor(
 
     private val _menu = MutableLiveData<ResponseState<List<Coffee>>>()
     val menu:LiveData<ResponseState<List<Coffee>>> = _menu
-
-    private val _items = MutableLiveData<MutableList<MutableMap<Int, Int>>>()
-    val items:LiveData<MutableList<MutableMap<Int, Int>>> = _items
 
     fun getMenu(id:Int){
         viewModelScope.launch {
@@ -36,33 +31,26 @@ class MenuViewModel @Inject constructor(
             }
         }
     }
-    fun setMap(list:List<Coffee>){
-        _items.value = emptyList<MutableMap<Int, Int>>().toMutableList()
-        repeat(list.size){position ->
-            _items.value?.add(mutableMapOf(list[position].id to 0))
-        }
-    }
 
     fun getOrder(list: List<Coffee>):String?{
-        val orderList:MutableList<Order> = emptyList<Order>().toMutableList()
-
+        val orderList:MutableList<Coffee> = emptyList<Coffee>().toMutableList()
         repeat(list.size){position->
-            _items.value?.get(position)?.get(list[position].id).let {quantity ->
-                quantity?.let {
-                    if (quantity!=0)
-                        orderList.add(
-                            list[position].toOrder(
-
-                                quantity = it
-
-                            )
-                        )
-                }
+            if (list[position].quantity != 0){
+                orderList.add(list[position])
             }
         }
-        return JsonConverter<List<Order>>().valueToJson(value = orderList)
+        return JsonConverter<List<Coffee>>().valueToJson(value = orderList)
     }
 
+    fun increase(position:Int){
+        (_menu.value as ResponseState.Success).data[position].quantity++
+    }
+
+    fun decrease(position: Int){
+        if ((_menu.value as ResponseState.Success).data[position].quantity > 0){
+            (_menu.value as ResponseState.Success).data[position].quantity--
+        }
+    }
 
     companion object {
         private const val startUrl = "location/"

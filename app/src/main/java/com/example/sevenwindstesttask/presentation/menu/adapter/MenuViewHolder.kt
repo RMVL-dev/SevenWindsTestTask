@@ -1,6 +1,5 @@
 package com.example.sevenwindstesttask.presentation.menu.adapter
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -21,7 +20,6 @@ class MenuViewHolder(view: View): RecyclerView.ViewHolder(view) {
         increment:()->Unit,
         decrement:()-> Unit,
         coffeeItem:Coffee,
-        counterValue:Int?
     ){
         Glide.with(image)
             .load(coffeeItem.imageURL)
@@ -32,8 +30,7 @@ class MenuViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         counter.setIncrease { increment() }
         counter.setDecrease { decrement() }
-        Log.d("COUNTER_", "Counter = $counterValue")
-        counter.setCountedValue(counter = counterValue)
+        counter.setCountedValue(counter = coffeeItem.quantity)
     }
 
 

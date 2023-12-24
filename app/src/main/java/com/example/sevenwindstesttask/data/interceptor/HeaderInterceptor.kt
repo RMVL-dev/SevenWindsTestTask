@@ -12,7 +12,6 @@ class HeaderInterceptor @Inject constructor(
 ):Interceptor {
 
     companion object{
-        //const val HEADER_AUTHORIZATION = "auth-jwt"
         const val HEADER_AUTHORIZATION = "Authorization"
         const val TOKEN_TYPE = "Bearer "
     }

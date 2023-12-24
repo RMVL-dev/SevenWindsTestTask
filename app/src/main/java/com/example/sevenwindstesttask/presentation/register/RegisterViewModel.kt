@@ -1,6 +1,5 @@
 package com.example.sevenwindstesttask.presentation.register
 
-import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

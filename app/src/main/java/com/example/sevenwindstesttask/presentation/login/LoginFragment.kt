@@ -88,13 +88,10 @@ class LoginFragment : Fragment() {
         loginViewModel.loginState.observe(viewLifecycleOwner){value ->
             when(value){
                 is ResponseState.Error -> {
-                    //Toast.makeText(requireActivity(),"StateError", Toast.LENGTH_LONG).show()
                 }
                 is ResponseState.Loading -> {
-                    //Toast.makeText(requireActivity(),"StateLoading", Toast.LENGTH_LONG).show()
                 }
                 is ResponseState.Success -> {
-                    //Toast.makeText(requireActivity(),"StateSuccess", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_loginFragment_to_nearestCoffeeShopsFragment)
                 }
             }

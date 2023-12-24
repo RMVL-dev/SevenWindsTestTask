@@ -75,12 +75,6 @@ dependencies {
     val glide_version = "4.16.0"
     implementation("com.github.bumptech.glide:glide:$glide_version")
 
-    //room
-    val room_version = "2.6.0"
-    implementation("androidx.room:room-runtime:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
-
     //yandex map kit
     implementation("com.yandex.android:maps.mobile:4.4.0-lite")
 

@@ -48,8 +48,8 @@ class MapActivity : AppCompatActivity() {
         val list = JsonConverter<List<CoffeeShop>>().jsonToValue(intent.getStringExtra(MapActivityContract.KEY))
 
         list?.let {coffeeShops ->
-            var midLatitude:Double = 0.0
-            var midLongitude:Double = 0.0
+            var midLatitude = 0.0
+            var midLongitude = 0.0
             repeat(coffeeShops.size){position ->
                 midLongitude += coffeeShops[position].point.longitude.toDouble()
                 midLatitude += coffeeShops[position].point.latitude.toDouble()

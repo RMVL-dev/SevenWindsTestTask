@@ -12,7 +12,6 @@ class MenuAdapter(
 
     var increment:(Int)->Unit = {}
     var decrement:(Int)->Unit = {}
-    var list:MutableList<MutableMap<Int, Int>> = emptyList<MutableMap<Int,Int>>().toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder =
         MenuViewHolder(
@@ -27,8 +26,7 @@ class MenuAdapter(
         holder.bind(
             increment = {increment(position)},
             decrement = {decrement(position)},
-            coffeeItem = menuList[position],
-            counterValue = list[position][menuList[position].id]
+            coffeeItem = menuList[position]
         )
     }
 

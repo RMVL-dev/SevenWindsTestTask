@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.sevenwindstesttask.databinding.FragmentMenuBinding
 import com.example.sevenwindstesttask.presentation.menu.adapter.MenuAdapter
 import com.example.sevenwindstesttask.data.responseState.ResponseState
-import com.example.sevenwindstesttask.data.responses.coffee.Coffee
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -51,43 +50,33 @@ class MenuFragment : Fragment() {
         menuViewModel.getMenu(arg.id)
         menuViewModel.menu.observe(viewLifecycleOwner){value ->
             when(value){
-                is ResponseState.Error -> {
-
-                }
-                is ResponseState.Loading -> {
-
-                }
+                is ResponseState.Error -> {}
+                is ResponseState.Loading -> {}
                 is ResponseState.Success -> {
                     val adapter = MenuAdapter(value.data)
-                    menuViewModel.setMap(value.data)
-                    /**
-                     * обработка каунтеров каждой позиции меню
-                     */
-                    menuViewModel.items.observe(viewLifecycleOwner){ list ->
-                        adapter.list = list
-                        adapter.decrement = {position ->
-                            val counter = list[position][value.data[position].id]
-                            if (counter != null) {
-                                if (counter > 0 )
-                                   list[position].set(value.data[position].id,value = counter-1)
-                            }
-                            adapter.notifyItemChanged(position)
-                        }
-                        adapter.increment = {position ->
-                            val counter = list[position][value.data[position].id]
-                            if (counter != null) {
-                                list[position].set(value.data[position].id,value = counter+1)
-                            }
-                            adapter.notifyItemChanged(position)
-                        }
+                    adapter.decrement = {position ->
+                        menuViewModel.decrease(position)
+                        adapter.notifyItemChanged(position)
+                    }
+                    adapter.increment = {position ->
+                        menuViewModel.increase(position)
+                        adapter.notifyItemChanged(position)
                     }
                     binding.listMenu.adapter = adapter
                 }
             }
         }
+        setButtonClickListener()
+        setNavigation()
+    }
+
+    private fun setNavigation(){
         binding.toolbarMenu.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+    }
+
+    private fun setButtonClickListener(){
         binding.btToOrder.setOnClickListener {
             val jsonOrder:String = menuViewModel
                 .getOrder((menuViewModel.menu.value as ResponseState.Success).data ) ?: ""
@@ -99,7 +88,6 @@ class MenuFragment : Fragment() {
             )
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

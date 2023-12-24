@@ -1,6 +1,5 @@
 package com.example.sevenwindstesttask.data.responses.coffee
 
-import com.example.sevenwindstesttask.data.responses.order.Order
 import com.google.gson.annotations.SerializedName
 
 data class Coffee(
@@ -12,15 +11,5 @@ data class Coffee(
     val imageURL: String,
     @SerializedName("price")
     val price: Int,
+    var quantity: Int = 0
 )
-
-
-fun Coffee.toOrder(quantity:Int):Order{
-    return Order(
-        id = this.id,
-        name = this.name,
-        imageURL =this.imageURL,
-        price = this.price,
-        quantity = quantity
-    )
-}
