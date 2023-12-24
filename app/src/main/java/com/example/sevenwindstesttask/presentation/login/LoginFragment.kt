@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.databinding.FragmentLoginBinding
-import com.example.sevenwindstesttask.presentation.register.RegisterState
+import com.example.sevenwindstesttask.data.responseState.ResponseState
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -88,14 +87,14 @@ class LoginFragment : Fragment() {
 
         loginViewModel.loginState.observe(viewLifecycleOwner){value ->
             when(value){
-                LoginState.Error -> {
-                    Toast.makeText(requireActivity(),"StateError", Toast.LENGTH_LONG).show()
+                is ResponseState.Error -> {
+                    //Toast.makeText(requireActivity(),"StateError", Toast.LENGTH_LONG).show()
                 }
-                LoginState.Loading -> {
-                    Toast.makeText(requireActivity(),"StateLoading", Toast.LENGTH_LONG).show()
+                is ResponseState.Loading -> {
+                    //Toast.makeText(requireActivity(),"StateLoading", Toast.LENGTH_LONG).show()
                 }
-                is LoginState.Success -> {
-                    Toast.makeText(requireActivity(),"StateSuccess", Toast.LENGTH_LONG).show()
+                is ResponseState.Success -> {
+                    //Toast.makeText(requireActivity(),"StateSuccess", Toast.LENGTH_LONG).show()
                     findNavController().navigate(R.id.action_loginFragment_to_nearestCoffeeShopsFragment)
                 }
             }

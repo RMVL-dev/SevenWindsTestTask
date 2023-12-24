@@ -3,6 +3,7 @@ package com.example.sevenwindstesttask.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.sevenwindstesttask.presentation.login.LoginViewModel
+import com.example.sevenwindstesttask.presentation.menu.MenuViewModel
 import com.example.sevenwindstesttask.presentation.nearestCoffeeShops.NearestCoffeeShopsViewModel
 import com.example.sevenwindstesttask.presentation.register.RegisterViewModel
 import dagger.Binds
@@ -30,4 +31,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(NearestCoffeeShopsViewModel::class)
     abstract fun nearestCoffeeShopsViewModel(coffeeShopsViewModel:NearestCoffeeShopsViewModel):ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MenuViewModel::class)
+    abstract fun menuViewModel(menuViewModel: MenuViewModel):ViewModel
 }

@@ -30,5 +30,30 @@
         android:id="@+id/nearestCoffeeShopsFragment"
         android:name="com.example.sevenwindstesttask.presentation.nearestCoffeeShops.NearestCoffeeShopsFragment"
         android:label="fragment_nearest_coffee_shops"
-        tools:layout="@layout/fragment_nearest_coffee_shops" />
+        tools:layout="@layout/fragment_nearest_coffee_shops" >
+        <action
+            android:id="@+id/action_nearestCoffeeShopsFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.sevenwindstesttask.presentation.menu.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_menuFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.example.sevenwindstesttask.presentation.order.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" >
+        <argument
+            android:name="order"
+            app:argType="string" />
+    </fragment>
 </navigation>

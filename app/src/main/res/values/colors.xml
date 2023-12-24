@@ -10,4 +10,5 @@
     <color name="toolbar_text_color">#FF846340</color>
     <color name="toolbar_container_color">#FFFAF9F9</color>
     <color name="coffee_shop_item_view_holder_color">#FFF6E5D1</color>
+    <color name="transparent">#00000000</color>
 </resources>

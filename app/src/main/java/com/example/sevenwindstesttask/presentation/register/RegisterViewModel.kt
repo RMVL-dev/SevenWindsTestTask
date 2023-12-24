@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sevenwindstesttask.data.responses.register.RegisterResponse
 import com.example.sevenwindstesttask.domain.registerUseCase.RegisterUseCase
+import com.example.sevenwindstesttask.data.responseState.ResponseState
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,8 +16,8 @@ class RegisterViewModel @Inject constructor(
 ):ViewModel(){
 
 
-    private var _registerState = MutableLiveData<RegisterState>(RegisterState.Loading)
-    val registerState: LiveData<RegisterState> = _registerState
+    private var _registerState = MutableLiveData<ResponseState<RegisterResponse>>()
+    val registerState: LiveData<ResponseState<RegisterResponse>> = _registerState
 
     fun register(
         email: String,
@@ -23,16 +25,16 @@ class RegisterViewModel @Inject constructor(
     ){
 
         viewModelScope.launch {
-            _registerState.value = RegisterState.Loading
+            _registerState.value = ResponseState.Loading()
             _registerState.value = try {
-                RegisterState.Success(
+                ResponseState.Success(
                     data = useCase.execute(
                         login = email,
                         password = password
                     )
                 )
             }catch (e:Exception){
-                RegisterState.Error
+                ResponseState.Error()
             }
         }
     }

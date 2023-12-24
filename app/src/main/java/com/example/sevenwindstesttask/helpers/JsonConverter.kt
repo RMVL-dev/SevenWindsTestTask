@@ -1,30 +1,29 @@
 package com.example.sevenwindstesttask.helpers
 
 import androidx.room.TypeConverter
-import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class JsonConverter {
+class JsonConverter<T>{
 
     private val gson by lazy { Gson() }
 
     @TypeConverter
-    fun coffeeShopsToJson(coffeeShops: List<CoffeeShop>?):String? =
-        if (coffeeShops == null)
+    fun valueToJson(value: T?):String? =
+        if (value == null)
             null
         else try {
-            gson.toJson(coffeeShops)
+            gson.toJson(value)
         }catch (e:Exception){
             null
         }
 
     @TypeConverter
-    fun coffeeShopsJsonToList(value:String?): List<CoffeeShop>? {
+    fun jsonToValue(value:String?): T? {
         if (value == null)
             return null
 
-        val typeEntity = object : TypeToken<List<CoffeeShop>?>() {}.type
+        val typeEntity = object : TypeToken<T?>() {}.type
 
         return try {
             gson.fromJson(value,typeEntity)

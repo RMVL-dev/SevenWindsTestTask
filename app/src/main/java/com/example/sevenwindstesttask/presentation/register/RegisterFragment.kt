@@ -5,14 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.databinding.FragmentRegisterBinding
-import com.example.sevenwindstesttask.presentation.login.LoginState
-import com.example.sevenwindstesttask.presentation.login.LoginViewModel
+import com.example.sevenwindstesttask.data.responseState.ResponseState
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -95,14 +94,14 @@ class RegisterFragment : Fragment() {
 
         registerViewModel.registerState.observe(viewLifecycleOwner){value ->
             when(value){
-                RegisterState.Error -> {
-                    Toast.makeText(requireActivity(),"StateError", Toast.LENGTH_LONG).show()
+                is ResponseState.Error -> {
+
                 }
-                RegisterState.Loading -> {
-                    Toast.makeText(requireActivity(),"StateLoading", Toast.LENGTH_LONG).show()
+                is ResponseState.Loading -> {
+
                 }
-                is RegisterState.Success -> {
-                    Toast.makeText(requireActivity(),"StateSuccess", Toast.LENGTH_LONG).show()
+                is ResponseState.Success -> {
+                    findNavController().navigate(R.id.action_registerFragment_to_nearestCoffeeShopsFragment)
                 }
             }
         }

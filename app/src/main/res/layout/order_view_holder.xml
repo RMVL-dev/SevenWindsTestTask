@@ -13,30 +13,44 @@
     android:layout_marginStart="@dimen/normal_100"
     android:layout_marginEnd="@dimen/normal_100"
     >
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
+
         <TextView
-            android:id="@+id/coffee_shop_name"
+            android:id="@+id/order_item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text = "BEDOEV COFFEE"
+
+            tools:text = "Капучино"
+
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_marginTop="@dimen/normal_50"
             android:layout_marginStart="@dimen/normal_100"
             />
-
         <TextView
-            android:id="@+id/coffee_shop_distance"
+            android:id="@+id/order_item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text = "1 км от вас"
+            tools:text = "200 руб"
+            android:textSize="18dp"
             android:layout_marginStart="@dimen/normal_100"
+            android:layout_below="@+id/order_item_name"
             />
 
-    </LinearLayout>
+        <com.example.sevenwindstesttask.presentation.view.Counter
+            android:id="@+id/order_item_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/normal_100"
+            />
+
+    </RelativeLayout>
     
-</androidx.cardview.widget.CardView >
+    
+</androidx.cardview.widget.CardView>

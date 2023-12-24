@@ -9,6 +9,9 @@ import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 class NearestCoffeeShopsAdapter(
     private val coffeeShops:List<CoffeeShop>
 ):RecyclerView.Adapter<CoffeeShopViewHolder>() {
+
+    private var clickListener: (Int) -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoffeeShopViewHolder =
         CoffeeShopViewHolder(
             view = LayoutInflater.from(parent.context)
@@ -18,6 +21,13 @@ class NearestCoffeeShopsAdapter(
     override fun getItemCount(): Int = coffeeShops.size
 
     override fun onBindViewHolder(holder: CoffeeShopViewHolder, position: Int) {
-        holder.bind(name = coffeeShops[position].name)
+        holder.bind(
+            name = coffeeShops[position].name,
+            cardClick = { clickListener(coffeeShops[position].id) }
+        )
+    }
+
+    fun setClickListener(clickListener:(Int)->Unit){
+        this.clickListener = clickListener
     }
 }

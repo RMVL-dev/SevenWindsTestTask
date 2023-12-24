@@ -2,12 +2,14 @@ package com.example.sevenwindstesttask.data
 
 import com.example.sevenwindstesttask.data.requests.login.LoginRequest
 import com.example.sevenwindstesttask.data.requests.register.RequestRegister
+import com.example.sevenwindstesttask.data.responses.coffee.Coffee
 import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 import com.example.sevenwindstesttask.data.responses.login.LoginResponse
 import com.example.sevenwindstesttask.data.responses.register.RegisterResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Url
 
 interface CoffeeService {
 
@@ -19,5 +21,8 @@ interface CoffeeService {
 
     @GET("locations")
     suspend fun getNearestCoffeeShops():List<CoffeeShop>
+
+    @GET
+    suspend fun getMenu(@Url url:String):List<Coffee>
 
 }

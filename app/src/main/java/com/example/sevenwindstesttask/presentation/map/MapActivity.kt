@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.sevenwindstesttask.R
+import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 import com.example.sevenwindstesttask.databinding.ActivityMapBinding
 import com.example.sevenwindstesttask.helpers.JsonConverter
 import com.yandex.mapkit.Animation
@@ -44,7 +45,7 @@ class MapActivity : AppCompatActivity() {
         setContentView(binding.root)
         tapListener = createTapListener()
 
-        val list = JsonConverter().coffeeShopsJsonToList(intent.getStringExtra(MapActivityContract.KEY))
+        val list = JsonConverter<List<CoffeeShop>>().jsonToValue(intent.getStringExtra(MapActivityContract.KEY))
 
         list?.let {coffeeShops ->
             var midLatitude:Double = 0.0
@@ -102,7 +103,7 @@ class MapActivity : AppCompatActivity() {
     private fun setPoint(latitude:BigDecimal,longitude:BigDecimal){
         binding.map.mapWindow.map.resetMapStyles()
         val placePoint = Point(latitude.toDouble(), longitude.toDouble())
-        val placeMarker = ImageProvider.fromResource(this, R.drawable.ic_coffee_shop)
+        val placeMarker = ImageProvider.fromResource(this, R.drawable.ic_coffee)
         binding.map.mapWindow.map.mapObjects.addPlacemark().apply {
             geometry = placePoint
             setIcon(placeMarker)

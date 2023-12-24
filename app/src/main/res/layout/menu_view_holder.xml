@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/menu_view_holder_width"
+    android:layout_height="@dimen/menu_view_holder_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="@dimen/normal_50"
+    android:layout_margin="@dimen/margin_view_holder"
+    app:cardCornerRadius="@dimen/corner_size_view_holder">
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <ImageView
+            android:id="@+id/iv_preview_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_image_height"
+            tools:src = "@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"
+            />
+        
+        <TextView
+            android:id="@+id/coffee_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            tools:text = "Эспрессо"
+            android:textSize="18sp"
+            android:textColor="@color/hint_text_color"
+            android:layout_marginTop="@dimen/normal_50"
+            android:layout_marginStart="@dimen/normal_50"
+
+            android:layout_below="@+id/iv_preview_image"
+            />
+
+        <TextView
+            android:id="@+id/view_holder_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coffee_name"
+            tools:text="200 руб"
+            android:textStyle="bold"
+            android:textSize="18sp"
+
+            android:layout_marginStart="@dimen/normal_50"
+            />
+
+        <com.example.sevenwindstesttask.presentation.view.Counter
+            android:id="@+id/view_holder_counter"
+            android:layout_width="@dimen/counter_width"
+            android:layout_height="@dimen/counter_height"
+            android:layout_below="@+id/coffee_name"
+            android:layout_toEndOf="@+id/view_holder_price"
+            android:layout_marginStart="@dimen/margin_view_holder"
+            />
+
+        
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -9,4 +9,9 @@
     <dimen name="normal_400">64dp</dimen>
     <dimen name="corner_size_view_holder">15dp</dimen>
     <dimen name="margin_view_holder">5dp</dimen>
+    <dimen name="menu_view_holder_height">205dp</dimen>
+    <dimen name="menu_view_holder_width">165dp</dimen>
+    <dimen name="menu_image_height">137dp</dimen>
+    <dimen name="counter_width">85dp</dimen>
+    <dimen name="counter_height">28dp</dimen>
 </resources>
