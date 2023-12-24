@@ -11,6 +11,8 @@ class NearestCoffeeShopsAdapter(
 ):RecyclerView.Adapter<CoffeeShopViewHolder>() {
 
     private var clickListener: (Int) -> Unit = {}
+    private var longitude = 0.0
+    private var latitude = 0.0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoffeeShopViewHolder =
         CoffeeShopViewHolder(
@@ -22,12 +24,22 @@ class NearestCoffeeShopsAdapter(
 
     override fun onBindViewHolder(holder: CoffeeShopViewHolder, position: Int) {
         holder.bind(
-            name = coffeeShops[position].name,
-            cardClick = { clickListener(coffeeShops[position].id) }
+            coffeeShop = coffeeShops[position],
+            cardClick = { clickListener(coffeeShops[position].id) },
+            currentLatitude = latitude,
+            currentLongitude = longitude
         )
     }
 
     fun setClickListener(clickListener:(Int)->Unit){
         this.clickListener = clickListener
+    }
+
+    fun setCoordinates(
+        latitude:Double,
+        longitude:Double
+    ){
+        this.latitude = latitude
+        this.longitude = longitude
     }
 }

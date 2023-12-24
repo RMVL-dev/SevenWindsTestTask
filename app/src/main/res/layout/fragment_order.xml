@@ -40,5 +40,16 @@
         android:layout_marginEnd="@dimen/normal_100"
         />
 
+    <TextView
+        android:id="@+id/order_check_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/check_string"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        />
 
 </RelativeLayout>

@@ -19,4 +19,9 @@
     <string name="go_to_reg"><u>Еще не зарегистрированы?</u></string>
     <string name="on_map">На карте</string>
     <string name="to_buy">Перейти к оплате</string>
+    <string name="request_location_perm_title">Данные о вашей локации</string>
+    <string name="request_location_perm_body">Мы используем ваши данные только для отображения на карте</string>
+    <string name="request_perm_negative">Нет</string>
+    <string name="request_perm_positive">Да</string>
+    <string name="check_string">Время ожидания заказа 15 минут!\nСпасибо что выбрали нас!</string>
 </resources>

@@ -78,6 +78,7 @@ dependencies {
     //yandex map kit
     implementation("com.yandex.android:maps.mobile:4.4.0-lite")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")

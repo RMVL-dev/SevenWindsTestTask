@@ -1,6 +1,7 @@
 package com.example.sevenwindstesttask.helpers
 
 import com.example.sevenwindstesttask.data.responses.coffee.Coffee
+import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -39,6 +40,19 @@ class JsonConverter<T>{
             return null
 
         val typeEntity = object : TypeToken<MutableList<Coffee>?>() {}.type
+
+        return try {
+            gson.fromJson(value,typeEntity)
+        }catch (e:Exception){
+            null
+        }
+    }
+
+    fun jsonCoffeeShopsToValue(value:String?): List<CoffeeShop>? {
+        if (value == null)
+            return null
+
+        val typeEntity = object : TypeToken<MutableList<CoffeeShop>?>() {}.type
 
         return try {
             gson.fromJson(value,typeEntity)

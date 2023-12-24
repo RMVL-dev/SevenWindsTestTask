@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.databinding.FragmentRegisterBinding
 import com.example.sevenwindstesttask.data.responseState.ResponseState
+import com.example.sevenwindstesttask.presentation.view.settingSnackBar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -44,16 +45,27 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setButtonClickListener()
+        emailHandler()
+        passwordHandler()
+        registerViewModel.registerState.observe(viewLifecycleOwner){value ->
+            when(value){
+                is ResponseState.Error -> {
 
-        //click listener for enter to account
-        binding.btRegisterEnter.setOnClickListener {
-            registerViewModel.register(
-                email = binding.etRegisterEmail.text.toString(),
-                password = binding.etRegisterPassword.text.toString()
-            )
+                }
+                is ResponseState.Loading -> {}
+                is ResponseState.Success -> {
+                    findNavController().navigate(R.id.action_registerFragment_to_nearestCoffeeShopsFragment)
+                }
+            }
         }
 
-        //email validation
+    }
+
+    /**
+     * Обработка email (проверка на правильность заполнения)
+     */
+    fun emailHandler(){
         binding.etRegisterEmail.doOnTextChanged { text, start, before, count ->
             val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+".toRegex()
             if (text.isNullOrEmpty()){
@@ -69,7 +81,12 @@ class RegisterFragment : Fragment() {
                 }
             }
         }
+    }
 
+    /**
+     * Обработка заполнения полей с паролем
+     */
+    fun passwordHandler(){
         //validation for empty field
         binding.etRegisterPassword.doOnTextChanged { text, start, before, count ->
             if (text.isNullOrEmpty()){
@@ -91,21 +108,16 @@ class RegisterFragment : Fragment() {
                 binding.btRegisterEnter.isEnabled = true
             }
         }
+    }
 
-        registerViewModel.registerState.observe(viewLifecycleOwner){value ->
-            when(value){
-                is ResponseState.Error -> {
-
-                }
-                is ResponseState.Loading -> {
-
-                }
-                is ResponseState.Success -> {
-                    findNavController().navigate(R.id.action_registerFragment_to_nearestCoffeeShopsFragment)
-                }
-            }
+    fun setButtonClickListener(){
+        //click listener for enter to account
+        binding.btRegisterEnter.setOnClickListener {
+            registerViewModel.register(
+                email = binding.etRegisterEmail.text.toString(),
+                password = binding.etRegisterPassword.text.toString()
+            )
         }
-
     }
 
     override fun onDestroyView() {

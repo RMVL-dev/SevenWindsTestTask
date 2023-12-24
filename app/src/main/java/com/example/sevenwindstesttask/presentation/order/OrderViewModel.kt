@@ -31,4 +31,8 @@ class OrderViewModel: ViewModel() {
             }
         }
     }
+
+    fun check(){
+        _orderList.value = emptyList<Coffee>().toMutableList()
+    }
 }

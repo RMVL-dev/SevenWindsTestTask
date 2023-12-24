@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.databinding.FragmentLoginBinding
 import com.example.sevenwindstesttask.data.responseState.ResponseState
+import com.example.sevenwindstesttask.presentation.view.settingSnackBar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -88,6 +89,10 @@ class LoginFragment : Fragment() {
         loginViewModel.loginState.observe(viewLifecycleOwner){value ->
             when(value){
                 is ResponseState.Error -> {
+                    view.settingSnackBar(
+                        message = "Возникла какая-то проблема",
+                        colorId = R.color.error_sign_in
+                    ).show()
                 }
                 is ResponseState.Loading -> {
                 }

@@ -53,6 +53,10 @@ class OrderFragment : Fragment() {
         binding.toolbarOrder.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+        binding.orderCheck.setOnClickListener {
+            orderViewModel.check()
+            binding.orderCheckMessage.visibility = View.VISIBLE
+        }
     }
 
     override fun onDestroyView() {

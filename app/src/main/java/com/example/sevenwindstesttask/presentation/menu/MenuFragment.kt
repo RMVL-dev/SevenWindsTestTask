@@ -9,9 +9,11 @@ import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.databinding.FragmentMenuBinding
 import com.example.sevenwindstesttask.presentation.menu.adapter.MenuAdapter
 import com.example.sevenwindstesttask.data.responseState.ResponseState
+import com.example.sevenwindstesttask.presentation.view.settingSnackBar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -50,7 +52,12 @@ class MenuFragment : Fragment() {
         menuViewModel.getMenu(arg.id)
         menuViewModel.menu.observe(viewLifecycleOwner){value ->
             when(value){
-                is ResponseState.Error -> {}
+                is ResponseState.Error -> {
+                    view.settingSnackBar(
+                        message = "Возникла какая-то проблема",
+                        colorId = R.color.error_sign_in
+                    ).show()
+                }
                 is ResponseState.Loading -> {}
                 is ResponseState.Success -> {
                     val adapter = MenuAdapter(value.data)

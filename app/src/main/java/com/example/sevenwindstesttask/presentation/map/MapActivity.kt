@@ -2,7 +2,6 @@ package com.example.sevenwindstesttask.presentation.map
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 import com.example.sevenwindstesttask.databinding.ActivityMapBinding
@@ -32,9 +31,6 @@ class MapActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMapBinding
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {}
-
     private var tapListener: GeoObjectTapListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +41,7 @@ class MapActivity : AppCompatActivity() {
         setContentView(binding.root)
         tapListener = createTapListener()
 
-        val list = JsonConverter<List<CoffeeShop>>().jsonToValue(intent.getStringExtra(MapActivityContract.KEY))
+        val list = JsonConverter<List<CoffeeShop>>().jsonCoffeeShopsToValue(intent.getStringExtra(MapActivityContract.KEY))
 
         list?.let {coffeeShops ->
             var midLatitude = 0.0

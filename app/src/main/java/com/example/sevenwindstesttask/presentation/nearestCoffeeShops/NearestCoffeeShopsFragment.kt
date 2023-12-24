@@ -9,12 +9,15 @@ import android.widget.Toast
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.sevenwindstesttask.MainActivity
+import com.example.sevenwindstesttask.R
 import com.example.sevenwindstesttask.data.responses.coffeeShops.CoffeeShop
 import com.example.sevenwindstesttask.databinding.FragmentNearestCoffeeShopsBinding
 import com.example.sevenwindstesttask.helpers.JsonConverter
 import com.example.sevenwindstesttask.presentation.map.MapActivityContract
 import com.example.sevenwindstesttask.presentation.nearestCoffeeShops.adapter.NearestCoffeeShopsAdapter
 import com.example.sevenwindstesttask.data.responseState.ResponseState
+import com.example.sevenwindstesttask.presentation.view.settingSnackBar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -56,13 +59,19 @@ class NearestCoffeeShopsFragment : Fragment() {
         coffeeShopsViewModel.coffeeShops.observe(viewLifecycleOwner){value ->
             when(value){
                 is ResponseState.Error -> {
-                    Toast.makeText(requireActivity(), "some error", Toast.LENGTH_LONG).show()
+                    view.settingSnackBar(
+                        message = "Возникла какая-то проблема",
+                        colorId = R.color.error_sign_in
+                    ).show()
                 }
-                is ResponseState.Loading -> {
-                }
+                is ResponseState.Loading -> {}
                 is ResponseState.Success -> {
                     val adapter = NearestCoffeeShopsAdapter(
                         coffeeShops = value.data
+                    )
+                    adapter.setCoordinates(
+                        latitude = (activity as MainActivity).latitude,
+                        longitude = (activity as MainActivity).longitude
                     )
                     adapter.setClickListener {id ->
                         findNavController().navigate(
